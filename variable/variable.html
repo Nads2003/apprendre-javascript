@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+
+        // Variable Declaration on ne peut pas modifier la valeur d'une variable déclarée avec const
+        const a = 3;
+        const d = 6.7;
+        const e = "Hello";
+        const j = "Sambara";
+        const isMajeur = true;
+        const notes = [12, 15, 18,"20", "bien",[0,1,2]];
+        const personne = {
+            id: 1,
+            nom: "Sambara",
+            prenom: "Jean",
+            notes: [12, 15, 18],
+            age: 25,
+            adresse: {
+                rue: "123 rue principale",
+                ville: "Paris",
+                codePostal: "75000"
+            }
+        };
+        // modification de la propriété nom de l'objet personne
+        personne.nom = "Sambara Nads"; 
+        notes[0] = 14; 
+        // affichage des variables  
+        console.log(personne.nom);
+        console.log(personne.adresse.ville);
+        console.log(personne.notes);
+       
+        // affichage du tableau notes 
+        console.log(notes);
+        console.log(notes[0]);
+
+        // affichage des variables
+        console.log(e + j);
+        console.log(e + " " + j);
+        console.log(`${e} ${j} ${d} ${a}`);
+          
+        //le typeof permet de connaitre le type d'une variable
+        console.log(typeof a);// affichage du type de la variable a
+ 
+        // le length permet de connaitre la longueur d'une variable
+        console.log(e.length);
+        console.log(notes.length);
+        console.log(personne.notes.length);
+
+        // Variable Declaration on peut modifier la valeur d'une variable déclarée avec let
+        let b = 4;
+        b = 5;
+        let f = 7.8;
+        let g = "salut \n comment ça va ?" ;
+        let h = g ;
+        console.log(h);
+         
+        // Variable Declaration on peut modifier la valeur d'une variable déclarée avec var
+        var c = 5;
+        
+    </script>
+</head>
+<body>
+    
+</body>
+</html>
