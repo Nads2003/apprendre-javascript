@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Boucle</title>
+    <script>
+        //declaration de la variable age
+        const age = prompt('Quel est votre âge ?'); 
+        const pays ='FR'
+        const peutConduireFrance = pays === 'FR' && age >= 18;
+        const peutConduireUS = pays === 'US' && age >= 16;
+        //condition pour vérifier si l'utilisateur est majeur
+        if (peutConduireFrance) {
+            console.log('Vous avez le droit de conduire.');
+        } else if (peutConduireUS) {
+            console.log('Vous avez le droit de conduire aux États-Unis.');
+        } else {
+            console.log('Vous n\'avez pas le droit de conduire.');
+        }
+        //avec switch
+        switch (pays) {
+            case 'FR':
+                if (age >= 18) {
+                    console.log('Vous avez le droit de conduire en France.');
+                } else {
+                    console.log('Vous n\'avez pas le droit de conduire en France.');
+                }
+                break;
+            case 'US':
+                if (age >= 16) {
+                    console.log('Vous avez le droit de conduire aux États-Unis.');
+                } else {
+                    console.log('Vous n\'avez pas le droit de conduire aux États-Unis.');
+                }
+                break;
+            default:
+                console.log('Pays non reconnu pour la conduite.');
+        }
+    </script>
+
+</body>
+</html>
