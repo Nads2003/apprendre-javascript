@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>La portée des variables</title>
+    <script>
+        // let et const ont une portée de bloc, ce qui signifie qu'ils ne sont accessibles que dans le bloc où ils sont déclarés (entre des accolades {}). var a une portée de fonction, ce qui signifie qu'il est accessible dans toute la fonction où il est déclaré. 
+        let age = 18;
+        if (age >= 18) {
+            let message = 'Vous êtes majeur.';//message est défini dans ce bloc if
+            console.log(message); // Affiche "Vous êtes majeur."
+        }
+        // console.log(message); // Erreur : message n'est pas défini
+    </script>
+</head>
+<body>
+    
+</body>
+</html>
