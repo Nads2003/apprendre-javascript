@@ -6,16 +6,66 @@
     <title>Fonction</title>
     <script>
         //premier fonction avec parametre
-        //meme avec const CanDrive = function(age, pays){}
+        //meme avec const CanDrive = function(age, pays){} 
         function CanDrive(age,pays){
             if ((pays === 'FR' && age >= 18) || (pays === 'US' && age >= 16)){
                 return true
             }
             return false
+
         }
         
         //appel de fonction
         console.log(CanDrive(14,'FR'));
+
+
+        //le différence entre les deux fonctions est que la première est une déclaration de fonction et la deuxième est une expression de fonction.
+        //la déclaration de fonction est hoisted, ce qui signifie qu'elle peut être appelée avant d'être définie dans le code.
+        const CanDrive2 = function(age, pays){
+            if ((pays === 'FR' && age >= 18) || (pays === 'US' && age >= 16)){
+                return true
+            }
+            return false
+
+        }
+        console.log(CanDrive2(14,'FR'));
+        const a ={
+            firstname :"John",
+            lastname:"Doe",
+            fullname: function(){
+                console.log(`${this.firstname} ${this.lastname}`)
+            }
+        }
+        a.fullname();
+        console.log('Bonjour'.toUpperCase())
+
+
+        //function fléchée
+        const CanDrive3 = (age, pays) => {
+            if ((pays === 'FR' && age >= 18) || (pays === 'US' && age >= 16)){
+                return true
+            }
+            return false
+
+        }
+        //fonction fléchée avec un seul ligne de code
+        const somme = (a,b) => a+b
+        console.log("somme de a et b : " + somme(2,3))
+        //la fonction fléchée est une syntaxe plus concise pour écrire des fonctions en JavaScript. Elle ne possède pas de contexte this propre, ce qui signifie qu'elle hérite du contexte this de la portée dans laquelle elle est définie.
+        console.log(CanDrive3(14,'FR'));
+
+        //fonction callback
+        const isPair = (a, callback) => {
+            if(a % 2 === 0){
+                callback(a)
+            }
+           
+        }
+        isPair(2, (a) => {
+            console.log(`${a} est pair`)
+        })
+
+
     </script>
 </head>
 <body>

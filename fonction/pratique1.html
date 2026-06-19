@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pratique des Fonctions</title>
+     <script>
+        //Exercice : Créer un jeu de devinette où l'utilisateur doit deviner un nombre aléatoire entre 0 et 10. L'utilisateur a trois chances pour deviner le nombre. Afficher un message de félicitations s'il devine correctement, sinon afficher un message d'encouragement après chaque tentative.
+        //fonction pour générer un nombre aléatoire entre 0 et 10
+        function getRandomInt(min, max){
+           return Math.floor(Math.random() * (max +1));
+       }
+       const solution = getRandomInt(10);
+       console.log("solution : " + solution)
+       //fonction pour vérifier si la devinette est correcte
+       function isRight(guess){
+           return guess == solution
+       }
+       //fonction pour gérer les tentatives de devinette
+       function guess(){
+        const userGuess = parseInt(prompt("Devinez le nombre entre 0 et 10"));
+        return isRight(userGuess);
+       }
+       for(let i = 0; i < 3; i++){
+           if(guess()){
+               console.log("Bravo, vous avez deviné le nombre !")
+               break;
+           } else {
+               console.log("Désolé, essayez encore.")
+           }
+       }
+       //nombre premier : un nombre premier est un nombre entier supérieur à 1 qui n'est divisible que par 1 et lui-même. Par exemple, les nombres premiers les plus connus sont 2, 3, 5, 7, 11, etc.
+       function isPrime(num){   
+              if(num <= 1) return false;
+              for(let i = 2; i < num; i++){
+                if(num % i === 0){
+                     return false;
+                }
+              }
+              return true;
+         }
+         console.log("is 7 prime ? " + isPrime(7))
+   </script>
+</head>
+<body>
+  
+</body>
+</html>
