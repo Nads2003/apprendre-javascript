@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pratique 2 de fonction</title>
+    <script>
+        //Exercice : Créer une fonction qui prend un mot en paramètre et retourne true si le mot est un palindrome (un mot qui se lit de la même manière à l'envers) et false sinon. Tester la fonction avec différents mots.
+        const words = {
+            Kayak:true,
+            kayak:true,
+            Level:true,
+            level:true,
+            rotor:true,
+            civic:true,
+            madam:true,
+            bonjour:false,
+            javascript:false,
+
+        }
+        function isPalindrome(word){
+            //convetir le mot en minuscule pour éviter les problèmes de casse
+            word = word.toLowerCase();
+            //inverser le mot et le comparer avec le mot original 
+            const reversedWord = word.split("").reverse().join("").toLowerCase();
+            return word === reversedWord;
+        }
+        for(const word in words){
+            if(isPalindrome(word) === words[word]){
+                console.log(`Le mot ${word} est un palindrome : ${isPalindrome(word)}`);
+            } else {
+                console.log(`Le mot ${word} n'est pas un palindrome : ${isPalindrome(word)}`);
+            }
+        }
+
+       // creer tableau d'eleve avec no et note ,et calculer la moyenne des notes et afficher le nom de l'eleve avec la note la plus elevee avec fonction
+       const students = [
+           { name: "Alice", note: [15, 14, 16] },
+           { name: "Bob", note: [12, 13, 11] },
+           { name: "Charlie", note: [18, 17, 19] },
+           { name: "David", note: [10, 11, 12] }
+       ];
+//fonction pour calculer la moyenne des notes d'un eleve
+         function moyenne(notes){
+               let sum = 0;
+               for(const note of notes){
+                    sum += note;
+               }
+               return sum / notes.length;
+
+          }
+          //calculer la moyenne pour chaque eleve et l'ajouter comme une nouvelle propriete dans l'objet de l'eleve
+          for(const student of students){
+             student.moyenne = moyenne(student.note);
+          }
+          console.log(students);
+    
+          //fonction pour trouver trois eleves avec la meilleure moyenne en utilisant sort
+            function bestStudents(students){
+                 let best = students.sort((a, b) => b.moyenne - a.moyenne);
+                 return best.slice(0, 3);
+            }
+
+            console.log("Les trois meilleurs eleves sont : ", bestStudents(students));
+          
+            // trouve le note  min et max de chaque eleve et l'afficher avec une fonction
+            function minMaxNotes(students){
+                for(const student of students){
+                    const min = Math.min(...student.note);
+                    const max = Math.max(...student.note);
+                    console.log(`L'eleve ${student.name} a une note minimale de ${min} et une note maximale de ${max}`);
+                }
+            }
+            console.log(minMaxNotes(students));
+
+            
+            //creer une fonction qui compte le nombre de foids d'un mot dans une phrase et l'afficher
+            const phrase = "Le chat est sur le toit du chat";
+            const wordse = phrase.toLowerCase().split(" ");
+            function countOccurrences(word, phrase) {
+                const regex = new RegExp(`\\b${word}\\b`, "gi");
+                const matches = phrase.match(regex);
+                return matches ? matches.length : 0;
+            }
+            for(const word of wordse){
+                const count = countOccurrences(word, phrase);
+                console.log(`Le mot "${word}" apparait ${count} fois.`);
+            }
+    </script>
+</head>
+<body>
+    
+</body>
+</html>
