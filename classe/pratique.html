@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>pratique  de classe</title>
+<script>
+    //Exercice : Créer une classe "Rectangle" avec des propriétés telles que la longueur et la largeur. Ajouter des méthodes pour calculer le périmètre et la surface du rectangle. Ajouter une méthode pour vérifier si le rectangle est valide (longueur et largeur doivent être positives). Ajouter une méthode pour comparer deux rectangles et déterminer lequel a le plus grand périmètre. Créer des instances de la classe et tester les méthodes.
+    class Rectangle {
+        constructor(longueur, largeur){
+            this.longueur = longueur;
+            this.largeur = largeur;
+        }
+        perimetre(){
+            return 2 * (this.longueur + this.largeur);
+        }
+        surface(){
+            return this.longueur * this.largeur;
+        }
+        get isValide(){
+            return this.longueur > 0 && this.largeur > 0;
+        }
+        isBiggerThan(otherRectangle){
+            return this.perimetre() > otherRectangle.perimetre();
+        }
+    }
+    //appeller la classe Rectangle pour créer une instance de rectangle et tester les méthodes
+    const rectangle1 = new Rectangle(5, 3);
+    const rectangle2 = new Rectangle(4, 4);
+    console.log(`Périmètre du rectangle : ${rectangle1.perimetre()}`);
+    console.log(`Surface du rectangle : ${rectangle1.surface()}`);
+    console.log(`Le rectangle est-il valide ? ${rectangle1.isValide}`);
+    console.log(`Le rectangle1 est-il plus grand que le rectangle2 ? ${rectangle1.isBiggerThan(rectangle2)}`);
+    class Carre extends Rectangle {
+      //le constructeur de la classe Carre prend un seul paramètre pour la longueur du côté et appelle le constructeur de la classe Rectangle avec la même valeur pour la longueur et la largeur  
+        constructor(cote){
+            super(cote, cote);
+        }
+    }
+    //appeller la classe Carre pour créer une instance de carré et tester les méthodes héritées de la classe Rectangle
+    const carre1 = new Carre(4);
+
+
+// exercice : Créer une classe "Livre" avec des propriétés telles que le titre, l'auteur et le nombre de pages. Ajouter des méthodes pour ouvrir le livre, tourner la page suivante, tourner la page précédente et fermer le livre. Ajouter une méthode pour vérifier si le livre est ouvert ou fermé. Créer des instances de la classe et tester les méthodes.
+    class Book{
+        #page=1
+        constructor(title, author, pages){
+            this.title = title;
+            this.author = author;
+            this.pages = pages;
+            this.isOpen = false;
+        }
+        get page(){
+            return this.#page;
+        }
+        open(){
+            this.isOpen = true;
+        }
+        close(){
+            this.isOpen = false;
+        }
+        nextPage(){
+           if(this.isOpen && this.#page < this.pages){
+                this.#page++;
+            }
+        }
+        prevPage(){
+            if(this.isOpen && this.#page > 1){
+                this.#page--;
+            }
+        }
+    }
+    const book1 = new Book("The Great Gatsby", "F. Scott Fitzgerald", 180);
+    console.log(book1.page);
+    book1.open();
+    book1.nextPage();
+    console.log(book1.page);
+    book1.close();
+    console.log(book1.page);
+    book1.prevPage();
+    console.log(book1.page);
+    const book2 = new Book("To Kill a Mockingbird", "Harper Lee", 281);
+
+    class Library {
+      
+        #book = []
+
+        addbook(book){
+            this.#book.push(book)
+        }
+        addBooks(books){
+            for(let book of books){
+                this.addbook(book)
+            }
+        }
+    }
+    const library = new Library();
+    library.addBook(book1);
+    library.addBook(book2);
+    console.log(library.findBookByTitle("The Great Gatsby"));
+</script>
+</head>
+<body>
+
+
+</body>
+</html>

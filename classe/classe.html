@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Classe</title>
+    <script>
+        //Exercice : Créer une classe "Personne" avec des propriétés telles que le nom, l'âge et la profession. Ajouter une méthode pour afficher les informations de la personne. Créer des instances de la classe et tester la méthode d'affichage.
+
+        class Personne {
+            constructor(nom, age, profession){
+                this.nom = nom;
+                this.age = age;
+                this.profession = profession;
+            }
+            //setters et getters pour les propriétés de la classe
+            setNom(nom){       
+                this.nom = nom;
+            }
+            setAge(age){
+                this.age = age;
+            }
+            setProfession(profession){
+                this.profession = profession;
+            }
+            getNom(){
+                return this.nom;
+            }
+            getAge(){
+                return this.age;
+            }
+            getProfession(){
+                return this.profession;
+            }
+
+            afficherInfo(){
+                console.log(`Nom : ${this.nom}, Age : ${this.age}, Profession : ${this.profession}`);
+            }
+        }
+
+        const personne1 = new Personne("Alice", 30, "Développeuse");
+        const personne2 = new Personne("Bob", 25, "Designer");
+       //modifier les propriétés de la personne1
+        personne1.setNom("Alice Smith");
+        personne1.setAge(31);
+        personne1.setProfession("Senior Développeuse");
+        //afficher les informations des personnes
+        personne1.afficherInfo();
+        personne2.afficherInfo();
+
+         //Exercice : Créer une classe "Animal" avec des propriétés telles que le nom, l'espèce et l'âge. Ajouter une méthode pour faire un bruit spécifique à l'animal. Créer des instances de la classe et tester la méthode de bruit.
+
+         class Animal {
+            constructor(nom, espece, age){
+                this.nom = nom;
+                this.espece = espece;
+                this.age = age;
+            }
+
+            faireBruit(){
+                if(this.espece === "Chien"){
+                    console.log("Woof !");
+                } else if(this.espece === "Chat"){
+                    console.log("Meow !");
+                } else {
+                    console.log("L'animal ne fait pas de bruit spécifique.");
+                }
+            }
+        }
+
+        const animal1 = new Animal("Rex", "Chien", 5);
+        const animal2 = new Animal("Mittens", "Chat", 3);
+
+        animal1.faireBruit();
+        animal2.faireBruit();
+
+    </script>
+</head>
+<body>
+    
+</body>
+</html>
