@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gestion d'erreur</title>
+    <script>
+  //Gestion d'erreur : Créer une fonction qui prend un nombre en paramètre et retourne son carré. Ajouter une gestion d'erreur pour vérifier si le paramètre est bien un nombre. Si ce n'est pas le cas, lancer une exception avec un message d'erreur approprié. Tester la fonction avec différents types de paramètres (nombre, chaîne de caractères, tableau, etc.) et gérer les exceptions en affichant le message d'erreur dans la console.
+  function carre(nombre) {
+    try {
+      if (typeof nombre !== "number") {
+        throw new Error("Le paramètre doit être un nombre");
+      }
+      return nombre * nombre;
+    } catch (error) {
+      console.error(error.message);
+    }
+  }
+
+  // Tests
+  console.log(carre(5)); // 25
+  console.log(carre("5")); // Le paramètre doit être un nombre
+  console.log(carre([5])); // Le paramètre doit être un nombre
+
+  class Rectangle {
+    constructor(longueur, largeur) {
+      this.longueur = longueur;
+      this.largeur = largeur;
+    }
+
+    get area() {
+      return this.longueur * this.largeur;
+    }
+  }
+
+  function promptForRectangle() {
+    const width = parseInt(prompt("Entrez la largeur du rectangle :"));
+    const height = parseInt(prompt("Entrez la hauteur du rectangle :"));
+
+    try {
+      if (isNaN(width) || isNaN(height)) {
+        throw new Error("Les dimensions doivent être des nombres valides");
+      }
+      const rectangle = new Rectangle(width, height);
+      console.log(`L'aire du rectangle est : ${rectangle.area}`);
+    } catch (error) {
+      console.error("Erreur lors de la création du rectangle : " + error.message);
+    }
+  }
+  promptForRectangle();
+ 
+    </script>
+</head>
+<body>
+    
+</body>
+</html>
