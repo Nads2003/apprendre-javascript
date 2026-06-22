@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Principe d'heritage</title>
+    <script>
+        // exemple de base
+        const animal = {
+            mager(){
+                console.log('Cet animal mange');
+            }
+        };
+        const chiens = Object.create(animal);
+        chiens.aboyer = function (){
+            console.log("wouf !");
+        }
+        chiens.aboyer(); //"wouf !"
+        chiens.mager(); //" Cet animal mange." (herite via le prototype)
+       
+
+        //Fonction constructeur et prototype
+        function animale(nom){
+           this.nom = nom;
+        }
+        animale.prototype.manger = function(){
+            console.log(this.nom + "mange")
+        }
+        const chat = new animale("Felix");
+        chat.manger();
+
+        //toutes les instaces partages la meme fonction "manger"
+        const chien = new animale("Rex");
+        console.log(chat.manger === chien.manger); // true
+        
+
+        //Les classes introduites avec ES6 sont une syntaxe plus claire par-dessus le même mécanisme de prototypes.
+        class Animal {
+              constructor(nom) {
+                   this.nom = nom;
+            }
+              manger() {
+              console.log(this.nom + " mange.");
+            }
+        }
+        class Chien extends Animal {
+             aboyer() {
+             console.log(this.nom + " aboie : Wouf !");
+             }
+        }
+        const rex = new Chien("Rex");
+        rex.manger(); // "Rex mange." (hérité 
+
+
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

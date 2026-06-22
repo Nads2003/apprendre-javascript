@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Promises</title>
+    <script>
+        /*Une promise représente le resultat eventuel (succèc ou echec )
+        d'une opertion asynchrone*/
+        function chargerDonnees(){
+            return new Promise ((resolve, reject)=> {
+                setTimeout(() => {
+                    const succes = true;
+                    if(succes){
+                        resolve("Données chargées");
+                    } else{
+                        reject(
+                            new Error("Echec du chargement")
+                        );
+                    }
+                }, 1000)
+            });
+        }
+        chargerDonnees()
+          .then((resultat) => console.log(resultat))
+          .catch((erreur) => console.error(erreur));
+    </script>
+</head>
+<body>
+    <main>
+        <h1>Promises — explication</h1>
+        <p>Une <strong>Promise</strong> est un objet représentant l'issue d'une opération asynchrone. Elle peut être dans l'un des états : <em>pending</em> (en attente), <em>fulfilled</em> (résolue) ou <em>rejected</em> (rejetée).</p>
+        <p>La fonction qui crée la Promise reçoit deux fonctions : <code>resolve</code> et <code>reject</code>. Appeler <code>resolve(value)</code> indique le succès et transmet <code>value</code> au handler <code>.then</code>. Appeler <code>reject(error)</code> indique l'échec et transmet <code>error</code> au handler <code>.catch</code>.</p>
+        <p>Dans cet exemple, <code>chargerDonnees</code> simule un délai d'une seconde puis appelle <code>resolve</code> si la variable <code>succes</code> est vraie. Changez <code>succes</code> en <code>false</code> pour voir le chemin d'erreur géré par <code>.catch</code>.</p>
+    </main>
+</body>
+</html>
