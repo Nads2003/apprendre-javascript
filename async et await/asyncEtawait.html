@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Async et await</title>
+    <script>
+        // utilitaire pour afficher la sortie dans la page
+        function log(...args) {
+            const out = document.getElementById('output');
+            const text = args.map(a => (typeof a === 'object' ? JSON.stringify(a, null, 2) : String(a))).join(' ');
+            if (out) out.textContent += text + '\n';
+            console.log(...args);
+        }
+
+        // 1) Exemple simple — await sur une Promise déjà résolue
+        async function demo() {
+            const resultat = await Promise.resolve('ok');
+            log('demo:', resultat);
+        }
+
+        // 2) Sleep (délai) — encapsuler setTimeout dans une Promise
+        function sleep(ms) { return new Promise(res => setTimeout(res, ms)); }
+        async function charger() {
+            log('avant');
+            await sleep(1000); // attend 1 seconde
+            log('après 1s');
+        }
+
+        // 3) Gestion d'erreur avec try/catch
+        function fetchData(success = true) {
+            return new Promise((res, rej) =>
+                setTimeout(() => success ? res('données') : rej(new Error('échec')), 500)
+            );
+        }
+        async function runTryCatch() {
+            try {
+                const data = await fetchData(false); // provoque le rejet
+                log('runTryCatch:', data);
+            } catch (err) {
+                log('Erreur :', err.message);
+            }
+        }
+
+        // 4) Exécution parallèle avec Promise.all
+        function fetchVal(i) { return new Promise(r => setTimeout(() => r(i * 2), 300 + i * 100)); }
+        async function parallel() {
+            const promesses = [fetchVal(1), fetchVal(2), fetchVal(3)];
+            const results = await Promise.all(promesses);
+            log('parallel:', results);
+        }
+
+        // 5) Requête réseau avec fetch
+        async function getJson() {
+            try {
+                const res = await fetch('https://jsonplaceholder.typicode.com/todos/1');
+                if (!res.ok) throw new Error(`HTTP ${res.status}`);
+                const json = await res.json();
+                log('fetch:', json);
+            } catch (err) {
+                log('Réseau / JSON erreur :', err.message);
+            }
+        }
+
+        // nettoie la zone de sortie
+        function clearOutput() {
+            const out = document.getElementById('output');
+            if (out) out.textContent = '';
+        }
+    </script>
+</head>
+<body>
+    <main>
+        <h1>async / await — exemples</h1>
+        <section>
+            <h2>1. Exemple simple</h2>
+            <p>await attend la résolution d'une Promise.</p>
+            <button onclick="demo()">Exécuter</button>
+        </section>
+        <section>
+            <h2>2. Sleep (délai)</h2>
+            <p>Simule un délai avec setTimeout encapsulé dans une Promise.</p>
+            <button onclick="charger()">Exécuter</button>
+        </section>
+        <section>
+            <h2>3. Gestion d'erreur (try/catch)</h2>
+            <p>Les rejets sont capturés par try/catch autour d'un await.</p>
+            <button onclick="runTryCatch()">Exécuter (provoque une erreur)</button>
+        </section>
+        <section>
+            <h2>4. Exécution parallèle</h2>
+            <p>Construire plusieurs Promises puis utiliser <code>Promise.all</code> pour attendre toutes les promesses en parallèle.</p>
+            <button onclick="parallel()">Exécuter</button>
+        </section>
+        <section>
+            <h2>5. Requête réseau (fetch)</h2>
+            <p>Exemple avec vérification de <code>res.ok</code> et parsing JSON (utilise JSONPlaceholder).</p>
+            <button onclick="getJson()">Exécuter</button>
+        </section>
+
+        <div style="margin-top:1rem;">
+            <button onclick="clearOutput()">Effacer la sortie</button>
+        </div>
+
+        <h3>Sortie</h3>
+        <pre id="output" style="background:#f6f6f6;padding:10px;height:250px;overflow:auto;border:1px solid #ddd;"></pre>
+    </main>
+</body>
+</html>
