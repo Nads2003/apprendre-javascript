@@ -24,6 +24,43 @@
         chargerDonnees()
           .then((resultat) => console.log(resultat))
           .catch((erreur) => console.error(erreur));
+        /*
+        On peut chaîner plusieurs .then() 
+        pour enchaîner des opérations asynchrones de façon plus
+        lisible que les callbacks imbriqués :
+         Example:
+         etape1()
+           .then((res1) => etape2(res1))
+           .then((res2) => etape3(res2))
+           .then((res3) => console.log("Resultat final :", res3))
+           .catch((erreur) => console.error("Erreur:",erreur));
+        */
+        /*
+        Promise.all() permet de lancer plusieurs requêtes en parallèle et d'attendre qu'elles soient
+        toutes terminées. */
+        async function recupererUtilisateurs(ids) {
+            const promesses = ids.map((id) =>
+        fetch(`https://api.exemple.com/utilisateurs/${id}`).then((r) => r.json())
+        );
+        const resultats = await Promise.all(promesses);
+        return resultats;
+            
+        }
+        /*
+        si une seule des promesses passées à Promise.all() echoue
+         toute la Promise.all() est rejetée. 
+        Pour gérer des échecs partiels,
+        on utilise Promise.allSettled().*/
+        const resultats = await Promise.allSettled(promesses);
+           resultats.forEach((resultat) => {
+           if (resultat.status === "fulfilled") {
+                console.log("Succès :", resultat.value);
+          } else {
+              console.log("Échec :", resultat.reason);
+          }
+});
+
+
     </script>
 </head>
 <body>
