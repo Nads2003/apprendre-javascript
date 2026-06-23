@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gestion des erreus</title>
+    <script>
+        /*fetch ne rejette PAS la Promise en cas d'erreur HTTP (404, 500, etc.).
+         Il faut vérifier manuellement la propriété response.ok ou response.status. 
+         fetch ne rejette que pour des erreurs réseau (pas de connexion, DNS, etc.).*/
+        async function recupererUtilisateur(id) {
+            try {
+                const reponse = await fetch(`https://jsonplaceholder.typicode.com/users/${id}`);
+                if (!reponse.ok) {
+                    throw new Error(`Erreur HTTP ${reponse.status}`);
+                }   
+                const utilisateur = await reponse.json();
+                return utilisateur;
+
+            } catch (erreur){
+                console.error("Echec de la recuperation : ", erreur.message);
+                throw erreur
+
+            }
+            
+        }
+        
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

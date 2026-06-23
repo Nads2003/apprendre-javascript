@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fetch</title>
+    <script>
+        async function recupererUtilisateur(id) {
+            const reponse = await fetch(`https://api.exemple.com/utilisateurs/${id}`);
+            const donnees = await reponse.json();
+            return donnees; 
+            
+        }
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

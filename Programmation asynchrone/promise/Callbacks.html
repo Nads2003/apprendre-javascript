@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fonction Callback</title>
+    <script>
+        /* 
+        Un callback est une fonction passée en argument à une autre fonction, 
+        pour être exécutée plus tard, 
+        souvent après une opération asynchrone (comme une requête réseau ou un délai).
+        */
+        function chargerDonnees(callback) {
+               setTimeout(() => {
+                  callback("Données chargées");
+               }, 1000);
+        }
+        chargerDonnees((resultat) => {
+                console.log(resultat); // "Données chargées" après 1 seconde
+        });
+        /*
+        Le problème :
+         si on enchaîne plusieurs opérations asynchrones avec des callbacks imbriqués,
+         le code devient difficile à lire (on parle de « callback hell »)
+        */
+       etape1((res1)=>{
+        etape2(res1, (res2)=>{
+            etape3(res2, (res3) =>{
+                console.log("Resultat final :", res3)
+                //code plus en plus imbriqué
+            });
+
+        });
+      });
+    </script>
+</head>
+<body>
+    
+</body>
+</html>
