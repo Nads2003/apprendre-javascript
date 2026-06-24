@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Spread operator (...)</title>
+    <script>
+        /*L'opérateur spread « déploie » les éléments d'un tableau ou les propriétés d'un objet. 
+        Très utile pour copier ou fusionner sans muter l'original.*/
+         //copie un tableau
+         const original = [ 1, 2, 3];
+         const copie = [...original, 4, 5];
+         console.log(copie); // [1, 2, 3, 4, 5]
+
+         // Fusionner des tableaux
+         const fruits1 = ["pomme", "banane"];
+         const fruits2 = ["orange", "kiwi"];
+         const tousLesFruits = [...fruits1, ...fruits2];
+
+        // Copier / fusionner des objets (immutabilité)
+         const utilisateur = { nom: "Alice", age: 30 };
+         const utilisateurMisAJour = { ...utilisateur, age: 31 };
+         console.log(utilisateurMisAJour); // { nom: "Alice", age: 31 }
+         console.log(utilisateur); 
+
+
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Destructuring d'object</title>
+    <script>
+        const utilisateur = { nom : "sambatra", age:30, ville: "Paris"};
+        const {nom, age} = utilisateur;
+        console.log(nom, age)//"sambatra" 30
+
+        //renommer une variable
+        const { nom: prenomUtilisateur } = utilisateur;
+        console.log(prenomUtilisateur); // "Alice"
+
+        // Valeur par défaut si la propriété n'existe pas
+        const { pays = "France" } = utilisateur;
+        console.log(pays); // "France"
+
+        // Destructuring dans les paramètres de fonction
+        function afficherProfil({ nom, age }) {
+            console.log(`${nom} a ${age} ans`);
+        }
+        afficherProfil(utilisateur); // "Alice a 30 ans"
+
+
+
+    </script>
+</head>
+<body>
+    
+</body>
+</html>
