@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Map</title>
+    <script>
+        const map = new Map();
+        map.set("nom","alice");
+        map.set(42, "reponse");
+        map.set(true, "vrai");
+
+        console.log(map.get("nom")); // "Alice"
+        console.log(map.size); // 3
+        console.log(map.has(42)); // true
+        map.delete(42);
+        // Itération
+        for (const [cle, valeur] of map) {
+            console.log(cle, valeur);
+       }
+    </script>
+</head>
+<body>
+    <div style="text-align: center; background-color: cadetblue;border-radius: 30px;">
+        <p>Map est une collection de paires clé-valeur, similaire à un objet, mais avec des avantages : les
+clés peuvent être de n'importe quel type (pas seulement des chaînes), l'ordre d'insertion est
+conservé, et on peut facilement connaître la taille</p>
+    </div>
+</body>
+</html>
