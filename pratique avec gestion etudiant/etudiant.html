@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gestion Etudiant</title>
+    <link rel="stylesheet" href="etudiant.css">
+</head>
+<body>
+
+<div>
+
+    <header class="titre">
+        <h1>Gestion des étudiants</h1>
+    </header>
+
+    <section>
+
+        <h4>Formulaire d'ajout des étudiants</h4>
+
+        <form>
+
+            <div>
+                <label for="numero">Numéro</label>
+                <input type="text" id="numero">
+            </div>
+
+            <div>
+                <label for="nom">Nom</label>
+                <input type="text" id="nom">
+            </div>
+
+            <div>
+                <label for="dateNaissance">Date de naissance</label>
+                <input type="date" id="dateNaissance">
+            </div>
+
+            <div>
+                <label for="mention">Mention</label>
+                <input type="text" id="mention">
+            </div>
+
+            <div>
+                <label for="niveau">Niveau</label>
+                <input type="text" id="niveau">
+            </div>
+
+            <div>
+                <button type="button" id="btAjouter">
+                    Ajouter
+                </button>
+            </div>
+
+        </form>
+
+    </section>
+
+    <section>
+        <div>
+            <input type="text" placeholder="Rechercher ...">
+        </div>
+        <table border="1">
+
+            <thead>
+                <tr>
+                    <th>Numéro</th>
+                    <th>Nom</th>
+                    <th>Date</th>
+                    <th>Mention</th>
+                    <th>Niveau</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+
+            <tbody id="studentTable">
+
+            </tbody>
+
+        </table>
+
+    </section>
+
+</div>
+
+<script src="etudiant.js"></script>
+
+</body>
+</html>
