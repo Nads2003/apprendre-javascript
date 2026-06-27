@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TODO LIST</title>
+    <style>
+        body{
+            padding: 4px;
+        }
+     .titre{
+        text-align: center;
+        color: blue;
+     }
+     .contenu{
+        background-color: beige;
+        width: 400px;
+        height: 200px;
+        position: relative;
+        left: 40%;
+     }
+    input,textarea{
+        margin: 18px;
+        height: 30px;;
+        width: 230px;
+        border-radius: 5px;
+     }
+     #addbutton{
+        background-color: rgb(19, 19, 99);
+        color: aliceblue;
+        width: 100px;
+        height: 40px;
+        border-radius: 20px;
+     }
+     .table{
+        text-align: center;
+        position: relative;
+        left: 40%;
+         width: 400px;
+     }
+     thead{
+        background-color: rgba(0, 0, 0, 0.715);
+        color: whitesmoke;
+        
+     }
+     .btndelete{
+        background-color: brown;
+        border-radius: 3px;
+     }
+   
+    </style>
+</head>
+<body>
+    <h1 class="titre"> Ma  Todo List</h1>
+    <div class="contenu">
+        <input type="text"
+     id="taskinput" class="input"
+     placeholder="Nouvelle tache">
+     <textarea name="" id="description" placeholder="description"></textarea>
+
+
+     <button id="addbutton">Ajouter</button>
+    </div>
+     
+     <br>
+     <table border="1" class="table">
+      <thead>
+        <tr>
+            <th>Num</th>
+            <th>Tache</th>
+            <th>Description</th>
+            <th>Action</th>
+        </tr>
+      </thead>    
+      <tbody id="taskTable"></tbody>
+    </table>
+<script src="script.js"></script>
+</body>
+</html>
