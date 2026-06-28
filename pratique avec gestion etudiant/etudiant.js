@@ -6,6 +6,7 @@ const mentionInput = document.getElementById("mention");
 const niveauInput = document.getElementById("niveau");
 const ajouterBtn = document.getElementById("btAjouter");
 const studentTable = document.getElementById("studentTable");
+const rechercheInput = document.getElementById("rechercher")
 
 ajouterBtn.addEventListener("click", ()=>{
  const num = numeroInput.value.trim();
@@ -51,5 +52,43 @@ tr.appendChild(tdniveau);
 tr.appendChild(tdaction);
 
 studentTable.appendChild(tr);
+//recherche
+rechercheInput.addEventListener("input", () => {
+
+    const recherche = rechercheInput.value.toLowerCase();
+
+    const lignes = studentTable.querySelectorAll("tr");
+
+    lignes.forEach((ligne) => {
+
+        const texte = ligne.textContent.toLowerCase();
+
+        if (texte.includes(recherche)) {
+            ligne.style.display = "";
+        } else {
+            ligne.style.display = "none";
+        }
+
+    });
+
+});
+
+//supprimer 
+btndelete.addEventListener("click", ()=>{
+   if(confirm("voulez vous supprimer")){
+      tr.remove();
+   }
+  })
+
+  //modifier
+  btnEdit.addEventListener("click", ()=>{
+    numeroInput.value = tdnumero.textContent;
+    nomInput.value = tdnom.textContent;
+    dateInput.value = tddate.textContent;
+    mentionInput.value = tdmention.textContent;
+    niveauInput.value = tdniveau.textContent;
+
+    tr.remove();
+  })
     
 })
